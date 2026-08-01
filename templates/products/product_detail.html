@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="product-detail">
+
+    <div class="product-image">
+
+        {% if product.image %}
+            <img src="{{ product.image.url }}">
+        {% endif %}
+
+    </div>
+
+    <div class="product-info">
+
+        <h1>{{ product.name }}</h1>
+
+        <p>{{ product.description }}</p>
+
+        <h2>₹{{ product.price }}</h2>
+
+        <p>
+            Stock:
+            {{ product.stock }}
+            {{ product.unit }}
+        </p>
+
+        <p>
+            Farmer:
+            {{ product.farmer.farm_name }}
+        </p>
+
+        <form method="POST"
+              action="{% url 'add_to_cart' product.id %}">
+
+            {% csrf_token %}
+
+            <div class="quantity-box">
+
+                <label>
+                    Quantity ({{ product.unit }})
+                </label>
+
+                <input
+                    type="number"
+                    name="quantity"
+                    min="1"
+                    max="{{ product.stock }}"
+                    value="1"
+                    required
+                >
+
+            </div>
+
+            <button type="submit"
+                    class="cart-btn">
+
+                Add To Cart
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <h1>Farmer Registration</h1>
+
+        <p class="auth-subtitle">
+            Join FarmMKT and start selling your products
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="auth-btn">
+                Register Farmer
+            </button>
+
+        </form>
+
+        <div class="approval-box">
+
+            Your account requires admin approval before you can sell products.
+
+        </div>
+
+        <div class="auth-footer">
+
+            <p>
+                Already have an account?
+            </p>
+
+            <a href="{% url 'login' %}">
+                Login Here
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

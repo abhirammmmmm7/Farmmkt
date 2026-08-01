@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Admin Dashboard</h1>
+
+<h2>Pending Farmers</h2>
+
+{% for farmer in pending_farmers %}
+
+<p>
+    {{ farmer.farm_name }}
+    {{ farmer.owner_name }}
+
+    <a href="{% url 'approve_farmer' farmer.id %}">
+        Approve
+    </a>
+</p>
+
+{% empty %}
+
+<p>No pending farmers</p>
+
+{% endfor %}
+
+{% endblock %}

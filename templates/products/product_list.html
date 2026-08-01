@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="products-page">
+
+    <div class="page-header">
+
+        <h2>My Products</h2>
+
+        <a href="{% url 'add_product' %}"
+           class="add-product-btn">
+            + Add Product
+        </a>
+
+    </div>
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            {% if product.image %}
+                <img src="{{ product.image.url }}">
+            {% endif %}
+
+            <div class="product-info">
+
+                <h3>{{ product.name }}</h3>
+
+                <div class="product-price">
+                    ₹{{ product.price }}
+                </div>
+
+                <div class="product-stock">
+                    Stock: {{ product.stock }}
+                </div>
+
+                <div class="product-actions">
+
+                    <a href="{% url 'edit_product' product.id %}"
+                       class="edit-btn">
+                        Edit
+                    </a>
+
+                    <a href="{% url 'delete_product' product.id %}"
+                       class="delete-btn">
+                        Delete
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% if not products %}
+<p>
+    No Products Found
+</p>
+
+{% endif %}
+
+{% endblock %}

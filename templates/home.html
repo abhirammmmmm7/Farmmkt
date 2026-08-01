@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <h1>
+            Fresh Produce
+            <span>Direct From Farmers</span>
+        </h1>
+
+        <p>
+            FarmMKT connects farmers directly with customers,
+            providing fresh agricultural products at fair prices
+            while helping farmers earn more.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="{% url 'register_customer' %}" class="btn-primary">
+                Shop Now
+            </a>
+
+            <a href="{% url 'register_farmer' %}" class="btn-outline">
+                Become a Seller
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="feature-strip">
+
+    <div class="feature-box">
+        <h3>🌿 Fresh & Organic</h3>
+        <p>100% natural produce</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>🚚 Fast Delivery</h3>
+        <p>Quick doorstep delivery</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>🔒 Secure Payments</h3>
+        <p>Safe transactions</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>👨‍🌾 Support Farmers</h3>
+        <p>Better profits for farmers</p>
+    </div>
+
+</section>
+
+<section class="why-section">
+
+    <h2>Why FarmMKT?</h2>
+
+    <p class="section-text">
+        Traditional supply chains involve multiple intermediaries,
+        reducing farmer profits and increasing customer costs.
+        FarmMKT creates a transparent marketplace where farmers
+        and customers benefit together.
+    </p>
+
+    <div class="card-grid">
+
+        <div class="info-card">
+            <h3>🌾 Direct From Farmers</h3>
+            <p>Buy fresh produce directly from verified farmers.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>💰 Fair Prices</h3>
+            <p>Better prices for customers and higher profits for farmers.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>🥬 Fresh & Healthy</h3>
+            <p>Farm fresh produce packed with nutrition.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>🌍 Sustainable Future</h3>
+            <p>Supporting local farmers and a greener future.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    <h3>
+        FarmMKT — Connecting Farmers, Enriching Lives
+    </h3>
+
+</footer>
+
+{% endblock %}

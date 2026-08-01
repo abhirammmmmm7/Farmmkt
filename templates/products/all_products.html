@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="products-page">
+
+    <div class="page-header">
+
+        <h2>Marketplace</h2>
+
+    </div>
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            {% if product.image %}
+                <img src="{{ product.image.url }}">
+            {% endif %}
+
+            <div class="product-info">
+
+                <h3>
+                    {{ product.name }}
+                </h3>
+
+                <div class="product-price">
+                    ₹{{ product.price }}
+                </div>
+
+                <div class="product-stock">
+                    {{ product.stock }} {{ product.unit }}
+                </div>
+
+                <a href="{% url 'product_detail' product.id %}"
+                   class="add-product-btn">
+                    View Product
+                </a>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <p>No Products Available</p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

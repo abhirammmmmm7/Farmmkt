@@ -1,0 +1,148 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FarmMKT</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        FarmMKT
+    </div>
+
+    <ul class="nav-links">
+
+        {% if request.user.is_authenticated %}
+        
+            {% if request.user.is_superuser %}
+
+                <li>
+                    <a href="{% url 'admin_dashboard' %}">
+                        Admin Dashboard
+                    </a>
+                </li>
+
+            {% elif request.user.user_type == 'farmer' %}
+
+                <li class="dropdown">
+
+                    <a href="#">
+                        Products ▼
+                    </a>
+
+                    <div class="dropdown-content">
+
+                        <a href="{% url 'add_product' %}">
+                            Add Product
+                        </a>
+
+                        <a href="{% url 'product_list' %}">
+                            My Products
+                        </a>
+
+                    </div>
+
+                </li>
+
+                <li>
+                    <a href="{% url 'farmer_dashboard' %}">
+                        Dashboard
+                    </a>
+                </li>
+
+            {% elif request.user.user_type == 'customer' %}
+
+                <li>
+                    <a href="{% url 'all_products' %}">
+                        Products
+                    </a>
+                </li>
+
+                <li>
+                    <a >
+                        Wishlist
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'cart' %}">
+                        Cart
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'customer_dashboard' %}">
+                        Dashboard
+                    </a>
+                </li>
+
+            {% endif %}
+
+            <li>
+                <a href="{% url 'logout' %}">
+                    Logout
+                </a>
+            </li>
+
+        {% else %}
+            
+            <li>
+                <a href="{% url 'home' %}">Home</a>
+            </li>
+            
+            <li>
+                <a href="{% url 'login' %}">
+                    Login
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'register_customer' %}">
+                    Register
+                </a>
+            </li>
+
+        {% endif %}
+
+    </ul>
+
+</nav>
+<div class="container">
+    {% if messages %}
+
+        <div class="messages-container">
+
+            {% for message in messages %}
+
+                <div class="message {{ message.tags }}">
+
+                    {{ message }}
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+
+</div>
+</body>
+
+</html>
