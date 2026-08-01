@@ -174,21 +174,6 @@ http://127.0.0.1:8000/
 
 ---
 
-# 📸 Screenshots
-
-You can add screenshots here later.
-
-Example:
-
-```
-screenshots/
-├── home.png
-├── login.png
-├── products.png
-├── cart.png
-```
-
----
 
 # 💡 What I Learned
 
